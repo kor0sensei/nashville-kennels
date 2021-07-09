@@ -1,9 +1,9 @@
 import React from "react"
-import { AnimalCard } from "./animal/AnimalCard.js"
-import { EmployeeCard } from "./employee/EmployeeCard.js"
-import { LocationCard } from "./location/LocationCard.js"
-import { CustomerCard } from "./customer/CustomerCard.js"
 import { PropsAndState } from "./PropsAndState.js"
+// import { AnimalCard } from "./animal/AnimalCard.js"
+// import { EmployeeCard } from "./employee/EmployeeCard.js"
+// import { LocationCard } from "./location/LocationCard.js"
+// import { CustomerCard } from "./customer/CustomerCard.js"
 
 export const Home = () => (
     <>
@@ -14,11 +14,11 @@ export const Home = () => (
             <div>Visit Us at the Nashville North Location</div>
             <div>500 Puppy Way</div>
         </address>
-        <PropsAndState yourName={"Avery"} />
+        <PropsAndState yourName={"Avery Olmstead"} />
 
-        <h2>Animals</h2>
+        {/* <h2>Animals</h2>
         <article className="animals">
-            <AnimalCard dogName="Doodles"/>
+            <AnimalCard />
             <AnimalCard />
             <AnimalCard />
         </article>
@@ -42,6 +42,6 @@ export const Home = () => (
             < CustomerCard />
             < CustomerCard />
             < CustomerCard />
-        </article>
+        </article> */}
     </>
 )
