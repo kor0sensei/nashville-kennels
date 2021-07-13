@@ -7,11 +7,12 @@ export const AnimalContext = createContext()
 export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([])
 
-    const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=location")
-        .then(res => res.json())
-        .then(setAnimals)
-    }
+// adding an _expand for each animal's customer, like we just did for getting a single animal
+const getAnimals = () => {
+    return fetch("http://localhost:8088/animals?_expand=location&_expand=customer")
+    .then(res => res.json())
+    .then(setAnimals)
+  }
 
     const addAnimal = animalObj => {
         return fetch("http://localhost:8088/animals", {
@@ -24,6 +25,18 @@ export const AnimalProvider = (props) => {
         .then(getAnimals)
     }
 
+    const getAnimalById = (id) => {
+        return fetch(`http://localhost:8088/animals/${id}?_expand=location&_expand=customer`)
+        .then(res => res.json()) // note we don't set anything on state here. Why?
+    }
+
+    const releaseAnimal = animalId => {
+        return fetch(`http://localhost:8088/animals/${animalId}`, {
+          method: "DELETE"
+        })
+          .then(getAnimals)
+    }
+    
     /*
         You return a context provider which has the
         `animals` state, `getAnimals` function,
@@ -32,7 +45,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals, getAnimals, addAnimal
+            animals, getAnimals, addAnimal, getAnimalById, releaseAnimal
         }}>
             {props.children}
         </AnimalContext.Provider>
