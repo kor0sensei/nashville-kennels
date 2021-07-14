@@ -5,16 +5,13 @@ import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
 import { AnimalDetail } from "./animal/AnimalDetails"
+import { AnimalSearch } from "./animal/AnimalSearch"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
-// import { AnimalCard } from "./animal/AnimalCard"
-// import { EmployeeCard } from "./employee/EmployeeCard"
-// import { CustomerCard } from "./customer/CustomerCard"
-// import { LocationCard } from "./location/LocationCard"
 
 export const ApplicationViews = () => {
     return (
@@ -29,6 +26,7 @@ export const ApplicationViews = () => {
                 <CustomerProvider>
                     <LocationProvider>
                         <Route exact path="/animals">
+                            <AnimalSearch />
                             <AnimalList />
                         </Route>
 
@@ -39,6 +37,11 @@ export const ApplicationViews = () => {
                         <Route exact path="/animals/create">
                             <AnimalForm />
                         </Route>
+                        
+                        <Route path="/animals/edit/:animalId(\d+)">
+                            <AnimalForm />
+                        </Route>
+
                     </LocationProvider>
                 </CustomerProvider>
             </AnimalProvider>
